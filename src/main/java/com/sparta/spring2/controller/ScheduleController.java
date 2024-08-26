@@ -23,13 +23,17 @@ public class ScheduleController {
     }
 
     @PutMapping("/schedules/{scheduleId}/todoTitle")
-    public ResponseEntity<ScheduleUpdateTitleResponseDto> updateTodoTitle(@PathVariable Long scheduleId, @RequestBody ScheduleUpdateTitleRequestDto requestDto) {
+    public ResponseEntity<ScheduleUpdateTitleResponseDto> updateTodoTitle(
+            @PathVariable Long scheduleId,
+            @RequestBody ScheduleUpdateTitleRequestDto requestDto) {
         return ResponseEntity.ok(scheduleService.updateTodoTitle(scheduleId, requestDto));
     }
 
 
     @PutMapping("/schedules/{scheduleId}/todoContents")
-    public ResponseEntity<ScheduleUpdateContentsResponseDto> updateTodoContents(Long scheduleId, ScheduleUpdateContentsRequestDto requestDto) {
+    public ResponseEntity<ScheduleUpdateContentsResponseDto> updateTodoContents(
+            @PathVariable Long scheduleId,
+            @RequestBody ScheduleUpdateContentsRequestDto requestDto) {
         return ResponseEntity.ok(scheduleService.updateTodoContents(scheduleId, requestDto));
     }
 }

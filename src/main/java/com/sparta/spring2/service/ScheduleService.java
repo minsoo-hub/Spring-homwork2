@@ -47,7 +47,9 @@ public class ScheduleService {
     }
 
     @Transactional
-    public ScheduleUpdateTitleResponseDto updateTodoTitle(Long scheduleId, ScheduleUpdateTitleRequestDto requestDto) {
+    public ScheduleUpdateTitleResponseDto updateTodoTitle(
+            Long scheduleId,
+            ScheduleUpdateTitleRequestDto requestDto) {
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new NullPointerException("수정할 일정이 없습니다"));
 
@@ -63,7 +65,10 @@ public class ScheduleService {
 
     }
 
-    public ScheduleUpdateContentsResponseDto updateTodoContents(Long scheduleId, ScheduleUpdateContentsRequestDto requestDto) {
+    @Transactional
+    public ScheduleUpdateContentsResponseDto updateTodoContents(
+            Long scheduleId,
+            ScheduleUpdateContentsRequestDto requestDto) {
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new NullPointerException("수정할 일정이 없습니다."));
 

@@ -1,18 +1,18 @@
 package com.sparta.spring2.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 public class Schedule {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String userName;
@@ -20,6 +20,9 @@ public class Schedule {
     private String todoContents;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+
+    @OneToMany(mappedBy = "schedule")
+    List<Comment> comments = new ArrayList<>();
 
     public Schedule(String userName, String todoTitle, String todoContents) {
         this.userName = userName;
