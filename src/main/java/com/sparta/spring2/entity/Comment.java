@@ -32,7 +32,5 @@ public class Comment {
 
     public void updateText(String text) {
         this.text = text;
-
-//        schedule.getComments().add(this);
     }
 }

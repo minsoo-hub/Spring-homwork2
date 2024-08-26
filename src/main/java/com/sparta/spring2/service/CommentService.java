@@ -2,6 +2,7 @@ package com.sparta.spring2.service;
 
 import com.sparta.spring2.dto.*;
 import com.sparta.spring2.entity.Comment;
+import com.sparta.spring2.entity.Schedule;
 import com.sparta.spring2.repository.CommentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

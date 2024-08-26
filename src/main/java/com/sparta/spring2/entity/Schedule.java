@@ -21,7 +21,7 @@ public class Schedule {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
-    @OneToMany(mappedBy = "schedule")
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE)
     List<Comment> comments = new ArrayList<>();
 
     public Schedule(String userName, String todoTitle, String todoContents) {
