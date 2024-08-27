@@ -1,14 +1,16 @@
 package com.sparta.spring2.service;
 
-import com.sparta.spring2.dto.*;
+import com.sparta.spring2.dto.schedule.*;
 import com.sparta.spring2.entity.Schedule;
 import com.sparta.spring2.repository.ScheduleRepository;
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
@@ -16,7 +18,7 @@ public class ScheduleService {
     @Transactional
     public ScheduleSaveResponseDto saveSchedule(ScheduleSaveRequestDto scheduleSaveRequestDto) {
         Schedule schedule = new Schedule(
-                scheduleSaveRequestDto.getUserName(),
+                scheduleSaveRequestDto.getUser(),
                 scheduleSaveRequestDto.getTodoTitle(),
                 scheduleSaveRequestDto.getTodoContents()
         );
@@ -25,9 +27,10 @@ public class ScheduleService {
 
         return new ScheduleSaveResponseDto(
                 newSchedule.getId(),
-                newSchedule.getUserName(),
+                newSchedule.getUser(),
                 newSchedule.getTodoTitle(),
-                newSchedule.getTodoContents()
+                newSchedule.getTodoContents(),
+                newSchedule.getCreatedAt()
         );
     }
 
@@ -38,7 +41,7 @@ public class ScheduleService {
 
         return new ScheduleDetailResponseDto(
                 schedule.getId(),
-                schedule.getUserName(),
+                schedule.getUser(),
                 schedule.getTodoTitle(),
                 schedule.getTodoContents()
         );
@@ -57,9 +60,10 @@ public class ScheduleService {
 
         return new ScheduleUpdateTitleResponseDto(
                 schedule.getId(),
-                schedule.getUserName(),
+                schedule.getUser(),
                 schedule.getTodoTitle(),
-                schedule.getTodoContents()
+                schedule.getTodoContents(),
+                schedule.getModifiedAt()
         );
 
 
@@ -76,9 +80,10 @@ public class ScheduleService {
 
         return new ScheduleUpdateContentsResponseDto(
                 schedule.getId(),
-                schedule.getUserName(),
+                schedule.getUser(),
                 schedule.getTodoTitle(),
-                schedule.getTodoContents()
+                schedule.getTodoContents(),
+                schedule.getModifiedAt()
         );
 
     }

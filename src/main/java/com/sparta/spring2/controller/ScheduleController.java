@@ -1,6 +1,6 @@
 package com.sparta.spring2.controller;
 
-import com.sparta.spring2.dto.*;
+import com.sparta.spring2.dto.schedule.*;
 import com.sparta.spring2.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 public class ScheduleController {
+
     private final ScheduleService scheduleService;
 
     @PostMapping("/schedules")
     public ResponseEntity<ScheduleSaveResponseDto> saveSchedule(ScheduleSaveRequestDto scheduleSaveRequestDto) {
         return ResponseEntity.ok(scheduleService.saveSchedule(scheduleSaveRequestDto));
-
     }
 
     @GetMapping("/schedules/{scheduleId}")

@@ -1,18 +1,18 @@
 package com.sparta.spring2.service;
 
-import com.sparta.spring2.dto.*;
+import com.sparta.spring2.dto.comment.*;
 import com.sparta.spring2.entity.Comment;
-import com.sparta.spring2.entity.Schedule;
 import com.sparta.spring2.repository.CommentRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CommentService {
 
     private final CommentRepository commentRepository;
@@ -29,7 +29,8 @@ public class CommentService {
         return new CommentSaveResponseDto(
                 newComment.getId(),
                 newComment.getUserName(),
-                newComment.getText()
+                newComment.getText(),
+                newComment.getCreatedAt()
         );
     }
 
@@ -68,7 +69,8 @@ public class CommentService {
         return new CommentUpdateTextResponseDto(
                 comment.getId(),
                 comment.getUserName(),
-                comment.getText()
+                comment.getText(),
+                comment.getModifiedAt()
         );
     }
 

@@ -1,11 +1,11 @@
-package com.sparta.spring2.dto;
+package com.sparta.spring2.dto.schedule;
 
+import com.sparta.spring2.entity.User;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 public class ScheduleSaveRequestDto {
-    private String userName;
+    private User user;
     private String todoTitle;
     private String todoContents;
 }
