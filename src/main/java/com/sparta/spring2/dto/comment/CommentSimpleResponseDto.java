@@ -1,4 +1,4 @@
-package com.sparta.spring2.dto;
+package com.sparta.spring2.dto.comment;
 
 import lombok.Getter;
 
